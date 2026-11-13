@@ -26,17 +26,47 @@
 <section class="final" id="contato"><div class="wrap"><h2 class="section-title">Precisa de orientação sobre sua conta?</h2><p>Entre em contato para explicar sua situação e obter informações sobre a análise jurídica do caso.</p><a class="btn" id="whatsapp" href="#" target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp →</a><p class="sub">Contato profissional. Não compartilhe senhas ou códigos de autenticação.</p></div></section>
 </main><footer><div class="wrap"><span>© <span id="year"></span> Murilo Sanchez • OAB/SP 538.016</span><span>Conteúdo informativo. A atuação profissional não implica garantia de resultado.</span></div></footer>
 <script>
-const WHATSAPP_NUMBER = '5517988252455'; // Ex.: 5517999999999
+
+const WHATSAPP_NUMBER = '5517988252455';
 const message = 'Olá! Gostaria de orientação jurídica sobre uma conta suspensa ou invadida.';
 const link = document.getElementById('whatsapp');
-if(/^\d{12,13}$/.test(WHATSAPP_NUMBER)){link.href='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(message)}else{link.removeAttribute('target');link.href='mailto:?subject='+encodeURIComponent('Orientação jurídica sobre conta suspensa ou invadida')+'&body='+encodeURIComponent(message);link.textContent='Solicitar orientação por e-mail →'}
-// Evento para configurar como conversão no Google Tag Manager.
+
+if (/^\d{12,13}$/.test(WHATSAPP_NUMBER)) {
+  link.href = 'https://wa.me/' + WHATSAPP_NUMBER +
+    '?text=' + encodeURIComponent(message);
+} else {
+  link.removeAttribute('target');
+  link.href = 'mailto:?subject=' +
+    encodeURIComponent('Orientação jurídica sobre conta suspensa ou invadida') +
+    '&body=' + encodeURIComponent(message);
+  link.textContent = 'Solicitar orientação por e-mail →';
+}
+
 link.addEventListener('click', function () {
   if (link.href.startsWith('https://wa.me/')) {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({event: 'whatsapp_click', link_url: link.href, link_text: link.textContent.trim()});
+
+    window.dataLayer.push({
+      event: 'whatsapp_click',
+      link_url: link.href,
+      link_text: link.textContent.trim()
+    });
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18573051737/-KBACL6k4bcdENmOqZhF'
+      });
+    } else {
+      window.dataLayer.push({
+        event: 'conversion',
+        send_to: 'AW-18573051737/-KBACL6k4bcdENmOqZhF'
+      });
+    }
   }
 });
-document.getElementById('year').textContent=new Date().getFullYear();
+
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-</body></html>
+</body>
+</html>
+
