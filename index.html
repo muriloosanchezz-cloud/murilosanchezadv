@@ -1,9 +1,16 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NC4RQKMC');</script>
-<!-- End Google Tag Manager -->
+
+<!-- Google Ads - Tag do Google -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18573051737"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18573051737');
+</script>
+
 
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Orientação jurídica para contas do Instagram e Facebook suspensas, desativadas ou invadidas. Atendimento em Direito Digital.">
@@ -14,7 +21,6 @@
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC4RQKMC" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <header><div class="wrap"><a class="brand" href="#inicio">MURILO SANCHEZ<small>ADVOCACIA | DIREITO DIGITAL</small></a><a class="navcta" href="#contato">Entre em contato</a></div></header>
 <main>
@@ -42,9 +48,17 @@ if (/^\d{12,13}$/.test(WHATSAPP_NUMBER)) {
   link.textContent = 'Solicitar orientação por e-mail →';
 }
 
+
 link.addEventListener('click', function () {
   if (link.href.startsWith('https://wa.me/')) {
-    window.dataLayer = window.dataLayer || [];
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18573051737/-KBACL6k4bcdENmOqZhF'
+      });
+    }
+  }
+});
+
 
     window.dataLayer.push({
       event: 'whatsapp_click',
